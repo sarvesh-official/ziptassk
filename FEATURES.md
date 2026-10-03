@@ -17,6 +17,7 @@ The pages are separate React page views selected by the URL path. They use norma
 - Toggle completion with persistent backend updates.
 - Strike through completed todo names.
 - Edit todo names.
+- Edit from the main page with the same two-step name-then-description input flow.
 - Edit todo descriptions and deadlines from the detail page.
 - Delete individual todos.
 - Delete a todo from its detail page with confirmation.

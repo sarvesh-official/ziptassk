@@ -29,6 +29,8 @@ body { margin: 0; overflow: hidden; }
 .taskActions { gap: 1rem; }
 .viewTaskLink { color: #168f91; font-size: .9rem; text-decoration: none; }
 .editInput { width: 80%; border: 1px solid #2fbfbb; border-radius: 2rem; padding: .5rem 1rem; }
+.editTaskRow { display: flex; align-items: center; justify-content: center; gap: .65rem; width: 90%; margin: 0 auto; }
+.editTaskRow .editInput { flex: 1; width: auto; }
 .btnReset { background: #f36969; color: white; border: 0; font-weight: 500; border-radius: 2rem; padding: .5rem; cursor: pointer; }
 .btnReset:disabled { opacity: .5; cursor: not-allowed; }
 .errorMessage { color: #b42318; margin: 0; }

@@ -12,6 +12,9 @@ const Tasks = () => {
   const [todoArr, setTodoArr] = useState<Todo[]>([]);
   const [editId, setEditId] = useState<string | null>(null);
   const [editText, setEditText] = useState("");
+  const [editName, setEditName] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [editDescriptionMode, setEditDescriptionMode] = useState(false);
   const [quote, setQuote] = useState("Small steps make big progress.");
   const [author, setAuthor] = useState("Unknown");
   const [loading, setLoading] = useState(true);
@@ -82,12 +85,25 @@ const Tasks = () => {
   };
 
   const saveEditItem = async (todo: Todo) => {
-    const name = editText.trim();
+    const name = editName.trim();
     if (!name) return;
     try {
-      const updated = await request(`/todos/${todo._id}`, { method: "PATCH", body: JSON.stringify({ name }) });
-      setTodoArr((current) => current.map((item) => item._id === todo._id ? updated : item)); setEditId(null); setEditText("");
+      const updated = await request(`/todos/${todo._id}`, { method: "PATCH", body: JSON.stringify({ name, description: editText.trim() }) });
+      setTodoArr((current) => current.map((item) => item._id === todo._id ? updated : item)); setEditId(null); setEditText(""); setEditName(""); setEditDescription(""); setEditDescriptionMode(false);
     } catch (requestError) { setError(requestError instanceof Error ? requestError.message : "Could not edit task"); }
+  };
+
+  const startEditItem = (todo: Todo) => {
+    setEditId(todo._id); setEditName(todo.name); setEditDescription(todo.description); setEditText(todo.name); setEditDescriptionMode(false);
+  };
+
+  const moveEditToDescription = () => {
+    if (!editText.trim()) return;
+    setEditName(editText.trim()); setEditText(editDescription); setEditDescriptionMode(true);
+  };
+
+  const cancelEdit = () => {
+    setEditId(null); setEditText(""); setEditName(""); setEditDescription(""); setEditDescriptionMode(false);
   };
 
   const resetList = async () => {
@@ -103,7 +119,7 @@ const Tasks = () => {
       <div className="completed-tasks-message"><h5>{completedTasks}/{todoArr.length} Completed Tasks</h5></div>
       <div className="inputTaskDiv"><input className="inputBox" value={inputText} onChange={(event) => setInputText(event.target.value)} placeholder={descriptionMode ? "Description (optional)" : "Add a new task"} onKeyDown={(event) => { if (event.key !== "Enter") return; event.preventDefault(); if (descriptionMode) void addItemToArray(); else moveToDescription(); }} /><button type="button" onClick={() => descriptionMode ? void addItemToArray() : moveToDescription()}>{descriptionMode ? "Add" : "Next"}</button></div>
       {error && <p className="errorMessage" role="alert">{error}</p>}
-      <div className="todolistMain">{loading ? <div>Loading tasks…</div> : todoArr.length === 0 ? <div className="emptyState">No tasks yet. Add one to get started.</div> : <ul id="todolist">{todoArr.map((todo) => <li key={todo._id} className={todo.completed ? "completed" : ""}>{editId === todo._id ? <input className="editInput" value={editText} onChange={(event) => setEditText(event.target.value)} onBlur={() => void saveEditItem(todo)} onKeyDown={(event) => event.key === "Enter" && void saveEditItem(todo)} autoFocus /> : <div className="taskRow"><button type="button" className="taskText" onClick={() => void toggleComplete(todo)}>{todo.completed ? "✅" : "⭕"} <span className={todo.completed ? "completedText" : ""}>{todo.name}</span></button><div className="taskActions"><a className="viewTaskLink" href={`/todo?id=${encodeURIComponent(todo._id)}`}>View</a><button type="button" onClick={() => { setEditId(todo._id); setEditText(todo.name); }}>Edit</button><button type="button" onClick={() => void deleteItem(todo._id)} aria-label={`Delete ${todo.name}`}>×</button></div></div>}</li>)}</ul>}</div>
+      <div className="todolistMain">{loading ? <div>Loading tasks…</div> : todoArr.length === 0 ? <div className="emptyState">No tasks yet. Add one to get started.</div> : <ul id="todolist">{todoArr.map((todo) => <li key={todo._id} className={todo.completed ? "completed" : ""}>{editId === todo._id ? <div className="editTaskRow"><input className="editInput" value={editText} onChange={(event) => setEditText(event.target.value)} placeholder={editDescriptionMode ? "Description (optional)" : "Todo name"} onKeyDown={(event) => event.key === "Enter" && (editDescriptionMode ? void saveEditItem(todo) : moveEditToDescription())} autoFocus /><div className="taskActions"><button type="button" onClick={() => editDescriptionMode ? void saveEditItem(todo) : moveEditToDescription()}>{editDescriptionMode ? "Save" : "Next"}</button><button type="button" onClick={cancelEdit}>Cancel</button></div></div> : <div className="taskRow"><button type="button" className="taskText" onClick={() => void toggleComplete(todo)}>{todo.completed ? "✅" : "⭕"} <span className={todo.completed ? "completedText" : ""}>{todo.name}</span></button><div className="taskActions"><a className="viewTaskLink" href={`/todo?id=${encodeURIComponent(todo._id)}`}>View</a><button type="button" onClick={() => startEditItem(todo)}>Edit</button><button type="button" onClick={() => void deleteItem(todo._id)} aria-label={`Delete ${todo.name}`}>×</button></div></div>}</li>)}</ul>}</div>
       <button className="btnReset" type="button" onClick={() => void resetList()} disabled={todoArr.length === 0}>Reset List</button>
     </div></main>
     <aside className="fixed"><RightSideBar /></aside>
