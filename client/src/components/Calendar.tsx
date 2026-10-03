@@ -1,5 +1,5 @@
 import { useState } from "react";
-import calendarIllustration from "../assets/calendar-illustration.svg";
+import calendarIllustration from "../assets/plant-calendar.png";
 
 const Calendar = () => {
   const [currentDate] = useState(new Date());
@@ -42,7 +42,7 @@ const Calendar = () => {
         </div>
       </div>
       <div className="illustrations">
-        <img src={calendarIllustration} alt="Calendar with completed tasks" />
+        <img src={calendarIllustration} alt="Teal flowering plant" />
       </div>
     </div>
   );

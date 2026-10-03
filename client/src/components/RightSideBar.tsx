@@ -1,5 +1,5 @@
 
-import focusIllustration from "../assets/focus-illustration.svg";
+import focusIllustration from "../assets/plant-focus.png";
 
 const Sidebar = () => {
   return (
@@ -15,7 +15,7 @@ const Sidebar = () => {
         loading="lazy"
       ></iframe>
       <div className="illustrations">
-        <img src={focusIllustration} alt="Person organizing tasks" />
+        <img src={focusIllustration} alt="Blue and teal leafy plant" />
       </div>
     </div>
   );
