@@ -15,7 +15,7 @@ Built for the Ziptrrip Tech challenge, ziptassk combines a React frontend with a
 - Create todos with a name and optional description using a single two-step input.
 - Edit names inline on the list page and edit name, description, and deadline on the details page.
 - Mark todos done or pending; completed names are shown with a strike-through.
-- View individual todos at `/todo?id=<todo-id>`.
+- View individual todos at `/todo/?id=<todo-id>`.
 - Delete an individual todo or reset the whole list.
 - See completion progress, a live clock, a calendar, a motivational quote, and an embedded Spotify playlist.
 - Teal branding, a light-only theme, and local logo/profile/plant images.
@@ -36,7 +36,16 @@ flowchart LR
   Repository --> DB[(MongoDB todos collection)]
 ```
 
-The list page uses `/`. The details page uses `/todo?id=<todo-id>` and requests the selected item from `GET /api/todos/:id`.
+The frontend is a genuine Vite multi-page React application, not a single React app switching views by pathname. The root `index.html` mounts the todo list, while `todo/index.html` independently mounts the todo details page. The details page reads `id` from `/todo/?id=<todo-id>` and requests the selected item from `GET /api/todos/:id`. Navigation uses normal browser links between these documents.
+
+The production build emits separate HTML documents:
+
+```text
+client/dist/
+  index.html
+  todo/index.html
+  assets/...
+```
 
 ## Run locally
 
@@ -86,7 +95,11 @@ Open the local URL printed by Vite, usually `http://localhost:5173`. The fronten
 
 ```text
 client/                 React + TypeScript frontend
-  src/                  Pages, components, styles, and local assets
+  index.html            Todo list HTML entry point
+  todo/index.html       Todo details HTML entry point
+  src/main.tsx          Todo list React entry point
+  src/todo.tsx          Todo details React entry point
+  src/                  Shared components, styles, and local assets
 server/                 Express + TypeScript API
   src/routes/            HTTP route definitions
   src/controllers/       Request validation and responses

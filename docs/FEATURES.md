@@ -5,9 +5,9 @@ ziptassk is a multi-page todo application built for the Ziptrrip Tech challenge.
 ## Pages
 
 - **Todo list**: `/` or `/index.html`. Loads todos from the backend, shows completion progress, and supports adding a todo name and optional description, completing, editing the name, viewing, deleting, and resetting todos.
-- **Todo details**: `/todo?id=<todo-id>`. This separate React page view reads the todo id from the query string and displays its status, description, and deadline. It supports marking the todo done or pending, editing its name/description/deadline, and deleting it.
+- **Todo details**: `/todo/?id=<todo-id>`. This independently loaded React page reads the todo ID from the query string and fetches that todo from the backend. It displays its status, description, and deadline, and supports marking the todo done or pending, editing its name/description/deadline, and deleting it.
 
-The pages are separate React page views selected by the URL path. They use normal links so each page can be opened and shared directly.
+This is a genuine multi-page application: the todo list and todo details have separate HTML entry points (`index.html` and `todo/index.html`) and separate React entry modules (`src/main.tsx` and `src/todo.tsx`). It does not select views by pathname inside one React application. Normal browser links navigate between the documents, and either page can be opened directly. The Vite production build emits `dist/index.html` and `dist/todo/index.html`.
 
 ## System Architecture
 
@@ -17,7 +17,7 @@ ZipTassk uses a layered architecture. The React frontend communicates with the E
 flowchart TB
   subgraph Frontend[React frontend]
     List[Todo list page<br/>/]
-    Detail[Todo details page<br/>/todo?id=...]
+    Detail[Todo details page<br/>/todo/?id=...]
   end
 
   subgraph Backend[Express backend]
@@ -48,7 +48,7 @@ flowchart TB
 - **Repository** encapsulates MongoDB queries and writes through the Mongoose todo model, keeping database access out of services and controllers.
 - **MongoDB** stores todo documents in the `todos` collection, including name, description, deadline, completion state, and timestamps.
 
-For the details page, the browser route uses the todo ID as a query parameter (`/todo?id=...`). The frontend reads that ID and requests the backend resource at `/api/todos/:id`.
+For the details page, the browser URL uses the todo ID as a query parameter (`/todo/?id=...`). The frontend reads that ID and requests the backend resource at `/api/todos/:id`.
 
 ## Frontend functionality
 
