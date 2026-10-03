@@ -1,184 +1,62 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
-
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
-}
+* { box-sizing: border-box; font-family: "Urbanist", sans-serif; }
+body { margin: 0; overflow: hidden; }
+.LogoDiv { display: flex; align-items: center; gap: .5rem; }
+.LogoMark { display: inline-block; width: 2.1rem; height: 2.1rem; overflow: hidden; }
+.LogoMark img { height: 2.1rem; width: auto; max-width: none; }
+.Logo { font-size: 1.8rem; font-weight: 700; color: #51af4f; }
+.Avatar { display: grid; width: 3rem; height: 3rem; place-items: center; border-radius: 50%; background: #51af4f; color: #fff; font-weight: 700; }
+.Navbar { display: flex; justify-content: space-between; align-items: center; margin: 3rem; user-select: none; }
+.GrandParentDiv { display: flex; justify-content: center; gap: 8vmax; }
+.parentMain { display: flex; flex-direction: column; gap: 1rem; overflow-y: scroll; overflow-x: hidden; height: 80vh; width: 30vmax; }
+.parentMain::-webkit-scrollbar { display: none; }
+.MainHeaderDiv { display: flex; flex-direction: column; line-height: 5%; }
+.MainHeaderDiv > h1 { font-weight: 500; font-size: 1.95rem; }
+.MainHeaderDiv > h3 { font-weight: 200; font-size: .95rem; width: 21rem; line-height: 120%; letter-spacing: .3px; }
+.inputTaskDiv { display: flex; gap: .5rem; width: 100%; }
+.inputTaskDiv > input { width: 100%; padding: 1rem 0 1rem 20px; border: 1px solid rgba(80,80,80,.3); border-radius: 5rem; }
+.inputTaskDiv > input, .editInput { background: #fff; color: #08060d; }
+.inputBox:focus, .editInput:focus { outline: 2px solid #51af4f; outline-offset: 1px; }
+.inputTaskDiv button { background: #51af4f; color: white; border: 0; border-radius: 1rem; padding: 0 1rem; cursor: pointer; }
+.completed-tasks-message { background: #ecfaf0; border-radius: 1rem; }
+.completed-tasks-message h5 { padding: 0 1rem; }
+#todolist { padding: 0; list-style: none; }
+#todolist li { display: flex; justify-content: center; width: 100%; padding: 1rem 0; margin-top: 1rem; background: #f6f7fb; border-radius: 1rem; }
+.taskRow, .taskActions { display: flex; align-items: center; }
+.taskRow { justify-content: space-between; gap: 1rem; width: 90%; }
+.taskText, .taskActions button { border: 0; background: transparent; cursor: pointer; }
+.taskText { text-align: left; overflow-wrap: anywhere; }
+.completedText { text-decoration: line-through; }
+.taskActions { gap: 1rem; }
+.viewTaskLink { color: #237a38; font-size: .9rem; text-decoration: none; }
+.editInput { width: 80%; border: 1px solid #51af4f; border-radius: 2rem; padding: .5rem 1rem; }
+.btnReset { background: #f36969; color: white; border: 0; font-weight: 500; border-radius: 2rem; padding: .5rem; cursor: pointer; }
+.btnReset:disabled { opacity: .5; cursor: not-allowed; }
+.errorMessage { color: #b42318; margin: 0; }
+.emptyState { color: #6b6375; padding: 2rem 0; }
+.detailPage { width: min(680px, calc(100% - 2rem)); margin: 0 auto; text-align: left; }
+.backLink { display: inline-block; margin: .5rem 0 1.5rem; color: #237a38; text-decoration: none; }
+.todoDetailCard { padding: 2rem; border: 1px solid #d8e9da; border-radius: 1.25rem; background: #fff; box-shadow: 0 12px 30px rgba(35, 122, 56, .1); }
+.detailHeader { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.detailEyebrow { color: #6b6375; font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; }
+.statusBadge { padding: .35rem .7rem; border-radius: 2rem; font-size: .8rem; font-weight: 600; }
+.statusBadge.done { color: #237a38; background: #ecfaf0; }
+.statusBadge.pending { color: #8a5b00; background: #fff4d6; }
+.todoDetailCard h1 { margin: 1.5rem 0 .75rem; font-size: 2rem; }
+.detailDescription { color: #6b6375; line-height: 1.6; }
+.detailMeta { display: grid; gap: 1rem; margin: 2rem 0; }
+.detailMeta div { padding: .85rem 1rem; border-radius: .75rem; background: #f6f7fb; }
+.detailMeta dt { color: #6b6375; font-size: .8rem; }
+.detailMeta dd { margin: .25rem 0 0; overflow-wrap: anywhere; }
+.detailAction { border: 0; border-radius: 2rem; padding: .7rem 1rem; color: #fff; background: #51af4f; cursor: pointer; }
+.clockText { font-weight: 500; font-size: 1.95rem; }
+.calendar { text-align: center; }
+.calendar h2 { margin-bottom: 1rem; font-weight: 300; font-size: 1rem; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.day-header { font-weight: 600; padding: 5px; font-size: .8rem; }
+.day-cell { padding: 10px; border: .5px solid #ccc; font-size: 1rem; font-weight: 300; border-radius: 5px; }
+.today { background: #4caf50; color: white; font-weight: bold; }
+.illustrations { margin-top: 3rem; }
+.illustrations img { width: 20rem; max-width: 100%; }
+@media only screen and (max-width: 1160px) { .fixed { display: none; } }

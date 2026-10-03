@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 260" role="img" aria-labelledby="title desc">
+  <title id="title">Plan your tasks</title>
+  <desc id="desc">A calendar with completed tasks and a small plant.</desc>
+  <rect width="360" height="260" rx="28" fill="#ecfaf0"/>
+  <rect x="48" y="42" width="210" height="164" rx="18" fill="#fff" stroke="#bde5c2" stroke-width="4"/>
+  <rect x="48" y="42" width="210" height="42" rx="18" fill="#51af4f"/>
+  <path d="M92 28v29M214 28v29" stroke="#237a38" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#d8f2dc"><rect x="72" y="105" width="34" height="24" rx="6"/><rect x="121" y="105" width="34" height="24" rx="6"/><rect x="170" y="105" width="34" height="24" rx="6"/><rect x="72" y="146" width="34" height="24" rx="6"/><rect x="121" y="146" width="34" height="24" rx="6"/></g>
+  <circle cx="187" cy="158" r="17" fill="#51af4f"/><path d="m178 158 7 7 12-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M288 204v-49M288 174c-25-18-35-2-35-2M288 162c19-20 35-6 35-6" fill="none" stroke="#237a38" stroke-width="7" stroke-linecap="round"/>
+  <path d="M269 204h38" stroke="#237a38" stroke-width="7" stroke-linecap="round"/>
+</svg>
