@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div className="Navbar">
       <div className="LogoDiv">
-        <img className="Logo" src={LogoAsset} alt="ziptassk" />
+        <img className="Logo" src={LogoAsset} alt="ziptassk" style={{ width: "3rem", height: "3rem", objectFit: "contain" }} />
       </div>
       <div>
         <img className="Avatar" src={ProfileIcon} alt="ziptassk profile" />
