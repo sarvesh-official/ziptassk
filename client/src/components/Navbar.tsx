@@ -1,4 +1,5 @@
 import LogoAsset from "../assets/ziptassk-logo.png";
+import ProfileIcon from "../assets/profile-icon.png";
 
 const Navbar = () => {
   return (
@@ -7,7 +8,7 @@ const Navbar = () => {
         <img className="Logo" src={LogoAsset} alt="ziptassk" />
       </div>
       <div>
-        <span className="Avatar" aria-label="ziptassk profile">Z</span>
+        <img className="Avatar" src={ProfileIcon} alt="ziptassk profile" />
       </div>
     </div>
   );
