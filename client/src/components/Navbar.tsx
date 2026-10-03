@@ -1,11 +1,10 @@
-import LogoAsset from "../assets/Logo.png";
+import LogoAsset from "../assets/ziptassk-logo.png";
 
 const Navbar = () => {
   return (
     <div className="Navbar">
       <div className="LogoDiv">
-        <span className="LogoMark" aria-hidden="true"><img src={LogoAsset} alt="" /></span>
-        <span className="Logo">ziptassk</span>
+        <img className="Logo" src={LogoAsset} alt="ziptassk" />
       </div>
       <div>
         <span className="Avatar" aria-label="ziptassk profile">Z</span>

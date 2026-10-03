@@ -2,11 +2,9 @@
 
 * { box-sizing: border-box; font-family: "Urbanist", sans-serif; }
 body { margin: 0; overflow: hidden; }
-.LogoDiv { display: flex; align-items: center; gap: .5rem; }
-.LogoMark { display: inline-block; width: 2.1rem; height: 2.1rem; overflow: hidden; }
-.LogoMark img { height: 2.1rem; width: auto; max-width: none; }
-.Logo { font-size: 1.8rem; font-weight: 700; color: #51af4f; }
-.Avatar { display: grid; width: 3rem; height: 3rem; place-items: center; border-radius: 50%; background: #51af4f; color: #fff; font-weight: 700; }
+.LogoDiv { display: flex; align-items: center; }
+.Logo { width: 4rem; height: 3rem; object-fit: cover; border-radius: .6rem; }
+.Avatar { display: grid; width: 3rem; height: 3rem; place-items: center; border-radius: 50%; background: #2fbfbb; color: #fff; font-weight: 700; }
 .Navbar { display: flex; justify-content: space-between; align-items: center; margin: 3rem; user-select: none; }
 .GrandParentDiv { display: flex; justify-content: center; gap: 8vmax; }
 .parentMain { display: flex; flex-direction: column; gap: 1rem; overflow-y: scroll; overflow-x: hidden; height: 80vh; width: 30vmax; }
@@ -17,9 +15,9 @@ body { margin: 0; overflow: hidden; }
 .inputTaskDiv { display: flex; gap: .5rem; width: 100%; }
 .inputTaskDiv > input { width: 100%; padding: 1rem 0 1rem 20px; border: 1px solid rgba(80,80,80,.3); border-radius: 5rem; }
 .inputTaskDiv > input, .editInput { background: #fff; color: #08060d; }
-.inputBox:focus, .editInput:focus { outline: 2px solid #51af4f; outline-offset: 1px; }
-.inputTaskDiv button { background: #51af4f; color: white; border: 0; border-radius: 1rem; padding: 0 1rem; cursor: pointer; }
-.completed-tasks-message { background: #ecfaf0; border-radius: 1rem; }
+.inputBox:focus, .editInput:focus { outline: 2px solid #2fbfbb; outline-offset: 1px; }
+.inputTaskDiv button { background: #2fbfbb; color: white; border: 0; border-radius: 1rem; padding: 0 1rem; cursor: pointer; }
+.completed-tasks-message { background: #e0f7f5; border-radius: 1rem; }
 .completed-tasks-message h5 { padding: 0 1rem; }
 #todolist { padding: 0; list-style: none; }
 #todolist li { display: flex; justify-content: center; width: 100%; padding: 1rem 0; margin-top: 1rem; background: #f6f7fb; border-radius: 1rem; }
@@ -29,34 +27,34 @@ body { margin: 0; overflow: hidden; }
 .taskText { text-align: left; overflow-wrap: anywhere; }
 .completedText { text-decoration: line-through; }
 .taskActions { gap: 1rem; }
-.viewTaskLink { color: #237a38; font-size: .9rem; text-decoration: none; }
-.editInput { width: 80%; border: 1px solid #51af4f; border-radius: 2rem; padding: .5rem 1rem; }
+.viewTaskLink { color: #168f91; font-size: .9rem; text-decoration: none; }
+.editInput { width: 80%; border: 1px solid #2fbfbb; border-radius: 2rem; padding: .5rem 1rem; }
 .btnReset { background: #f36969; color: white; border: 0; font-weight: 500; border-radius: 2rem; padding: .5rem; cursor: pointer; }
 .btnReset:disabled { opacity: .5; cursor: not-allowed; }
 .errorMessage { color: #b42318; margin: 0; }
 .emptyState { color: #6b6375; padding: 2rem 0; }
 .detailPage { width: min(680px, calc(100% - 2rem)); margin: 0 auto; text-align: left; }
-.backLink { display: inline-block; margin: .5rem 0 1.5rem; color: #237a38; text-decoration: none; }
-.todoDetailCard { padding: 2rem; border: 1px solid #d8e9da; border-radius: 1.25rem; background: #fff; box-shadow: 0 12px 30px rgba(35, 122, 56, .1); }
+.backLink { display: inline-block; margin: .5rem 0 1.5rem; color: #168f91; text-decoration: none; }
+.todoDetailCard { padding: 2rem; border: 1px solid #b7e7e3; border-radius: 1.25rem; background: #fff; box-shadow: 0 12px 30px rgba(22, 143, 145, .1); }
 .detailHeader { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .detailEyebrow { color: #6b6375; font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; }
 .statusBadge { padding: .35rem .7rem; border-radius: 2rem; font-size: .8rem; font-weight: 600; }
-.statusBadge.done { color: #237a38; background: #ecfaf0; }
-.statusBadge.pending { color: #8a5b00; background: #fff4d6; }
+.statusBadge.done { color: #168f91; background: #e0f7f5; }
+.statusBadge.pending { color: #168f91; background: #e0f7f5; }
 .todoDetailCard h1 { margin: 1.5rem 0 .75rem; font-size: 2rem; }
 .detailDescription { color: #6b6375; line-height: 1.6; }
 .detailMeta { display: grid; gap: 1rem; margin: 2rem 0; }
 .detailMeta div { padding: .85rem 1rem; border-radius: .75rem; background: #f6f7fb; }
 .detailMeta dt { color: #6b6375; font-size: .8rem; }
 .detailMeta dd { margin: .25rem 0 0; overflow-wrap: anywhere; }
-.detailAction { border: 0; border-radius: 2rem; padding: .7rem 1rem; color: #fff; background: #51af4f; cursor: pointer; }
+.detailAction { border: 0; border-radius: 2rem; padding: .7rem 1rem; color: #fff; background: #2fbfbb; cursor: pointer; }
 .clockText { font-weight: 500; font-size: 1.95rem; }
 .calendar { text-align: center; }
 .calendar h2 { margin-bottom: 1rem; font-weight: 300; font-size: 1rem; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
 .day-header { font-weight: 600; padding: 5px; font-size: .8rem; }
 .day-cell { padding: 10px; border: .5px solid #ccc; font-size: 1rem; font-weight: 300; border-radius: 5px; }
-.today { background: #4caf50; color: white; font-weight: bold; }
+.today { background: #2fbfbb; color: white; font-weight: bold; }
 .illustrations { margin-top: 3rem; }
 .illustrations img { width: 20rem; max-width: 100%; }
 @media only screen and (max-width: 1160px) { .fixed { display: none; } }
