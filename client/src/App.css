@@ -35,9 +35,9 @@ body { margin: 0; overflow: hidden; }
 .btnReset:disabled { opacity: .5; cursor: not-allowed; }
 .errorMessage { color: #b42318; margin: 0; }
 .emptyState { color: #6b6375; padding: 2rem 0; }
-.detailPage { width: min(680px, calc(100% - 2rem)); margin: 0 auto; text-align: left; }
-.backLink { display: inline-block; margin: .5rem 0 1.5rem; color: #168f91; text-decoration: none; }
-.todoDetailCard { padding: 2rem; border: 1px solid #b7e7e3; border-radius: 1.25rem; background: #fff; box-shadow: 0 12px 30px rgba(22, 143, 145, .1); }
+.detailMain { text-align: left; }
+.backLink { display: inline-block; margin: .5rem 0 .25rem; color: #168f91; text-decoration: none; }
+.todoDetailCard { padding: 1.5rem; border: 0; border-radius: 1.25rem; background: #fff; box-shadow: 0 8px 24px rgba(22, 143, 145, .08); }
 .detailHeader { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .detailEyebrow { color: #6b6375; font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; }
 .statusBadge { padding: .35rem .7rem; border-radius: 2rem; font-size: .8rem; font-weight: 600; }
@@ -58,7 +58,7 @@ body { margin: 0; overflow: hidden; }
 .detailActions { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; margin-top: 1rem; }
 .secondaryAction, .deleteAction { border: 1px solid #a9e5e1; border-radius: 2rem; padding: .65rem 1rem; background: #fff; color: #168f91; cursor: pointer; }
 .deleteAction { border-color: #f0b5b5; color: #b42318; }
-.clockText { font-weight: 500; font-size: 1.95rem; }
+.clockText { width: 100%; margin: 0; text-align: center; font-weight: 500; font-size: 1.95rem; }
 .calendar { text-align: center; }
 .calendar h2 { margin-bottom: 1rem; font-weight: 300; font-size: 1rem; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }

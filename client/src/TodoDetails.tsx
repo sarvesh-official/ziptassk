@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import SideBar from "./components/SideBar";
+import RightSideBar from "./components/RightSideBar";
 
 type Todo = { _id: string; name: string; description: string; deadline: string; completed: boolean };
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000/api";
@@ -65,25 +67,29 @@ const TodoDetails = () => {
     } catch (requestError) { setError(requestError instanceof Error ? requestError.message : "Could not delete todo"); }
   };
 
-  return <main className="detailPage">
-    <a className="backLink" href="/">← Back to all todos</a>
-    {loading && <p>Loading todo…</p>}
-    {error && <p className="errorMessage" role="alert">{error}</p>}
-    {todo && <article className="todoDetailCard">
-      <div className="detailHeader"><span className="detailEyebrow">Todo details</span><span className={`statusBadge ${todo.completed ? "done" : "pending"}`}>{todo.completed ? "Completed" : "Pending"}</span></div>
-      {editing ? <form className="detailForm" onSubmit={(event) => void saveChanges(event)}>
-        <label>Name<input value={draftName} onChange={(event) => setDraftName(event.target.value)} required /></label>
-        <label>Description<textarea value={draftDescription} onChange={(event) => setDraftDescription(event.target.value)} rows={4} /></label>
-        <label>Deadline<input type="datetime-local" value={draftDeadline} onChange={(event) => setDraftDeadline(event.target.value)} required /></label>
-        <div className="detailActions"><button className="detailAction" type="submit" disabled={saving}>{saving ? "Saving…" : "Save changes"}</button><button className="secondaryAction" type="button" onClick={() => setEditing(false)}>Cancel</button></div>
-      </form> : <>
-        <h1 className={todo.completed ? "completedText" : ""}>{todo.name}</h1>
-        <p className="detailDescription">{todo.description || "No description was added for this todo."}</p>
-        <dl className="detailMeta"><div><dt>Deadline</dt><dd>{new Date(todo.deadline).toLocaleString()}</dd></div></dl>
-        <div className="detailActions"><button className="detailAction" type="button" onClick={() => void toggleComplete()}>{todo.completed ? "Mark as pending" : "Mark as done"}</button><button className="secondaryAction" type="button" onClick={() => setEditing(true)}>Edit todo</button><button className="deleteAction" type="button" onClick={() => void deleteTodo()}>Delete todo</button></div>
-      </>}
-    </article>}
-  </main>;
+  return <div className="GrandParentDiv">
+    <aside className="fixed"><SideBar /></aside>
+    <main className="RightSideDiv"><div className="parentMain detailMain">
+      <a className="backLink" href="/">← Back to all todos</a>
+      {loading && <p>Loading todo…</p>}
+      {error && <p className="errorMessage" role="alert">{error}</p>}
+      {todo && <article className="todoDetailCard">
+        <div className="detailHeader"><span className="detailEyebrow">Todo details</span><span className={`statusBadge ${todo.completed ? "done" : "pending"}`}>{todo.completed ? "Completed" : "Pending"}</span></div>
+        {editing ? <form className="detailForm" onSubmit={(event) => void saveChanges(event)}>
+          <label>Name<input value={draftName} onChange={(event) => setDraftName(event.target.value)} required /></label>
+          <label>Description<textarea value={draftDescription} onChange={(event) => setDraftDescription(event.target.value)} rows={4} /></label>
+          <label>Deadline<input type="datetime-local" value={draftDeadline} onChange={(event) => setDraftDeadline(event.target.value)} required /></label>
+          <div className="detailActions"><button className="detailAction" type="submit" disabled={saving}>{saving ? "Saving…" : "Save changes"}</button><button className="secondaryAction" type="button" onClick={() => setEditing(false)}>Cancel</button></div>
+        </form> : <>
+          <h1 className={todo.completed ? "completedText" : ""}>{todo.name}</h1>
+          <p className="detailDescription">{todo.description || "No description was added for this todo."}</p>
+          <dl className="detailMeta"><div><dt>Deadline</dt><dd>{new Date(todo.deadline).toLocaleString()}</dd></div></dl>
+          <div className="detailActions"><button className="detailAction" type="button" onClick={() => void toggleComplete()}>{todo.completed ? "Mark as pending" : "Mark as done"}</button><button className="secondaryAction" type="button" onClick={() => setEditing(true)}>Edit todo</button><button className="deleteAction" type="button" onClick={() => void deleteTodo()}>Delete todo</button></div>
+        </>}
+      </article>}
+    </div></main>
+    <aside className="fixed"><RightSideBar /></aside>
+  </div>;
 };
 
 export default TodoDetails;
