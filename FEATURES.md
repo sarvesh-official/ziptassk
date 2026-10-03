@@ -5,7 +5,7 @@ ziptassk is a multi-page todo application built for the Ziptrrip Tech challenge.
 ## Pages
 
 - **Todo list**: `/` or `/index.html`. Loads todos from the backend, shows completion progress, and supports adding a todo name and optional description, completing, editing the name, viewing, deleting, and resetting todos.
-- **Todo details**: `/todo?id=<todo-id>`. This separate React page view reads the todo id from the query string and displays its status, description, deadline, and id. It supports marking the todo done or pending, editing its name/description/deadline, and deleting it.
+- **Todo details**: `/todo?id=<todo-id>`. This separate React page view reads the todo id from the query string and displays its status, description, and deadline. It supports marking the todo done or pending, editing its name/description/deadline, and deleting it.
 
 The pages are separate React page views selected by the URL path. They use normal links so each page can be opened and shared directly.
 

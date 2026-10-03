@@ -79,7 +79,7 @@ const TodoDetails = () => {
       </form> : <>
         <h1 className={todo.completed ? "completedText" : ""}>{todo.name}</h1>
         <p className="detailDescription">{todo.description || "No description was added for this todo."}</p>
-        <dl className="detailMeta"><div><dt>Deadline</dt><dd>{new Date(todo.deadline).toLocaleString()}</dd></div><div><dt>Todo ID</dt><dd>{todo._id}</dd></div></dl>
+        <dl className="detailMeta"><div><dt>Deadline</dt><dd>{new Date(todo.deadline).toLocaleString()}</dd></div></dl>
         <div className="detailActions"><button className="detailAction" type="button" onClick={() => void toggleComplete()}>{todo.completed ? "Mark as pending" : "Mark as done"}</button><button className="secondaryAction" type="button" onClick={() => setEditing(true)}>Edit todo</button><button className="deleteAction" type="button" onClick={() => void deleteTodo()}>Delete todo</button></div>
       </>}
     </article>}
