@@ -4,18 +4,21 @@ ziptassk is a multi-page todo application built for the Ziptrrip Tech challenge.
 
 ## Pages
 
-- **Todo list**: `/` or `/index.html`. Loads todos from the backend, shows completion progress, and supports adding, completing, editing, viewing, deleting, and resetting todos.
-- **Todo details**: `/todo?id=<todo-id>`. This is a separate React page view that reads the todo id from the query string, loads the single todo from the backend, displays its status, description, deadline, and id, and allows the todo to be marked done or pending.
+- **Todo list**: `/` or `/index.html`. Loads todos from the backend, shows completion progress, and supports adding a todo name and optional description, completing, editing the name, viewing, deleting, and resetting todos.
+- **Todo details**: `/todo?id=<todo-id>`. This separate React page view reads the todo id from the query string and displays its status, description, deadline, and id. It supports marking the todo done or pending, editing its name/description/deadline, and deleting it.
 
 The pages are separate React page views selected by the URL path. They use normal links so each page can be opened and shared directly.
 
 ## Frontend functionality
 
 - Create a todo with a generated deadline.
+- Add an optional description when creating a todo.
 - Toggle completion with persistent backend updates.
 - Strike through completed todo names.
 - Edit todo names.
+- Edit todo descriptions and deadlines from the detail page.
 - Delete individual todos.
+- Delete a todo from its detail page with confirmation.
 - Reset the complete list.
 - Show loading, empty, and API error states.
 - Show a calendar, live clock, quote, Spotify embed, and local illustrations.

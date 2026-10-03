@@ -7,6 +7,7 @@ const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000/api";
 
 const Tasks = () => {
   const [inputText, setInputText] = useState("");
+  const [inputDescription, setInputDescription] = useState("");
   const [todoArr, setTodoArr] = useState<Todo[]>([]);
   const [editId, setEditId] = useState<string | null>(null);
   const [editText, setEditText] = useState("");
@@ -54,8 +55,8 @@ const Tasks = () => {
     const name = inputText.trim();
     if (!name) return;
     try {
-      const todo = await request("/todos", { method: "POST", body: JSON.stringify({ name, description: "", deadline: new Date().toISOString() }) });
-      setTodoArr((current) => [todo, ...current]); setInputText(""); setError("");
+      const todo = await request("/todos", { method: "POST", body: JSON.stringify({ name, description: inputDescription.trim(), deadline: new Date().toISOString() }) });
+      setTodoArr((current) => [todo, ...current]); setInputText(""); setInputDescription(""); setError("");
     } catch (requestError) { setError(requestError instanceof Error ? requestError.message : "Could not add task"); }
   };
 
@@ -91,7 +92,7 @@ const Tasks = () => {
     <main className="RightSideDiv"><div className="parentMain">
       <div className="MainHeaderDiv"><h1>Hi There! 👋🏻</h1><h3>{quote}</h3><h3>- {author}</h3></div>
       <div className="completed-tasks-message"><h5>{completedTasks}/{todoArr.length} Completed Tasks</h5></div>
-      <div className="inputTaskDiv"><input className="inputBox" value={inputText} onChange={(event) => setInputText(event.target.value)} placeholder="Add a new task" onKeyDown={(event) => event.key === "Enter" && void addItemToArray()} /><button type="button" onClick={() => void addItemToArray()}>Add</button></div>
+      <div className="inputTaskDiv"><div className="taskFields"><input className="inputBox" value={inputText} onChange={(event) => setInputText(event.target.value)} placeholder="Add a new task" onKeyDown={(event) => event.key === "Enter" && void addItemToArray()} /><textarea className="descriptionBox" value={inputDescription} onChange={(event) => setInputDescription(event.target.value)} placeholder="Description (optional)" rows={1} /></div><button type="button" onClick={() => void addItemToArray()}>Add</button></div>
       {error && <p className="errorMessage" role="alert">{error}</p>}
       <div className="todolistMain">{loading ? <div>Loading tasks…</div> : todoArr.length === 0 ? <div className="emptyState">No tasks yet. Add one to get started.</div> : <ul id="todolist">{todoArr.map((todo) => <li key={todo._id} className={todo.completed ? "completed" : ""}>{editId === todo._id ? <input className="editInput" value={editText} onChange={(event) => setEditText(event.target.value)} onBlur={() => void saveEditItem(todo)} onKeyDown={(event) => event.key === "Enter" && void saveEditItem(todo)} autoFocus /> : <div className="taskRow"><button type="button" className={`taskText${todo.completed ? " completedText" : ""}`} onClick={() => void toggleComplete(todo)}>{todo.completed ? "✅" : "⭕"} {todo.name}</button><div className="taskActions"><a className="viewTaskLink" href={`/todo?id=${encodeURIComponent(todo._id)}`}>View</a><button type="button" onClick={() => { setEditId(todo._id); setEditText(todo.name); }}>Edit</button><button type="button" onClick={() => void deleteItem(todo._id)} aria-label={`Delete ${todo.name}`}>×</button></div></div>}</li>)}</ul>}</div>
       <button className="btnReset" type="button" onClick={() => void resetList()} disabled={todoArr.length === 0}>Reset List</button>
