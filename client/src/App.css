@@ -15,7 +15,7 @@ body { margin: 0; overflow: hidden; }
 .inputTaskDiv { display: flex; gap: .5rem; width: 100%; }
 .inputTaskDiv > input { width: 100%; padding: 1rem 0 1rem 20px; border: 1px solid rgba(80,80,80,.3); border-radius: 5rem; }
 .inputTaskDiv > input, .editInput { background: #fff; color: #08060d; }
-.inputBox:focus, .editInput:focus { outline: 2px solid #2fbfbb; outline-offset: 1px; }
+.inputBox:focus, .editInput:focus { outline: none; border-color: #2fbfbb; box-shadow: inset 0 0 0 2px #2fbfbb; }
 .inputTaskDiv button { background: #2fbfbb; color: white; border: 0; border-radius: 1rem; padding: 0 1rem; cursor: pointer; }
 .completed-tasks-message { background: #e0f7f5; border-radius: 1rem; }
 .completed-tasks-message h5 { padding: 0 1rem; }
