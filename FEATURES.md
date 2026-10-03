@@ -13,6 +13,7 @@ The pages are separate React page views selected by the URL path. They use norma
 
 - Create a todo with a generated deadline.
 - Add an optional description when creating a todo.
+- Use one two-step creation input: `Next` captures the name, then the same input accepts an optional description before `Add`.
 - Toggle completion with persistent backend updates.
 - Strike through completed todo names.
 - Edit todo names.

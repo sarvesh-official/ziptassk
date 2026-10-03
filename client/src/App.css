@@ -14,9 +14,6 @@ body { margin: 0; overflow: hidden; }
 .MainHeaderDiv > h3 { font-weight: 200; font-size: .95rem; width: 21rem; line-height: 120%; letter-spacing: .3px; }
 .inputTaskDiv { display: flex; gap: .5rem; width: 100%; }
 .inputTaskDiv .inputBox { width: 100%; padding: 1rem 0 1rem 20px; border: 1px solid rgba(80,80,80,.3); border-radius: 5rem; }
-.taskFields { display: grid; flex: 1; gap: .45rem; }
-.taskFields .inputBox { width: 100%; }
-.descriptionBox { width: 100%; resize: vertical; min-height: 2.2rem; padding: .6rem 1.25rem; border: 1px solid rgba(80,80,80,.3); border-radius: 1rem; background: #fff; color: #08060d; font: inherit; }
 .inputTaskDiv > input, .editInput { background: #fff; color: #08060d; }
 .inputBox:focus, .editInput:focus { outline: none; border-color: #2fbfbb; box-shadow: inset 0 0 0 2px #2fbfbb; }
 .inputTaskDiv button { background: #2fbfbb; color: white; border: 0; border-radius: 1rem; padding: 0 1rem; cursor: pointer; }
